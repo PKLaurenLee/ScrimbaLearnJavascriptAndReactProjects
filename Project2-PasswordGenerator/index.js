@@ -4,18 +4,31 @@ const characters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", 
     "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "~", "`", "!",
     "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "[", "}", "]",
     ",", "|", ":", ";", "<", ">", ".", "?", "/"];
-const passwordLength = 10;
+var passwordLength = 10;
 const passwordElements = document.getElementsByClassName("password-button");
+const passwordLengthLabel = document.getElementById("length-label");
 
 function generatePasswords() {
     for (const passwordEl of passwordElements) {
-        passwordEl.innerHTML = getTooltipHTML();
-        passwordEl.innerText += generatePassword();
+        // Clear the existing content
+        passwordEl.innerHTML = "";
+        // Append the tooltip to the button
+        passwordEl.appendChild(createTooltip("Copy to clipboard"));
+
+        // Create the password text node
+        const passwordText = document.createTextNode(generatePassword());
+        // Append the password text to the button
+        passwordEl.appendChild(passwordText);
     }
 }
 
-function getTooltipHTML() {
-    return "<span class=\"tooltiptext\" id=\"myTooltip\">Copy to clipboard</span>"
+function createTooltip(message) {
+    const tooltip = document.createElement("span");
+    tooltip.className = "tooltiptext";
+    tooltip.id = "myTooltip";
+    tooltip.innerText = message;
+
+    return tooltip;
 }
 
 function generatePassword() {
@@ -23,7 +36,6 @@ function generatePassword() {
     for (let i = 0; i < passwordLength; i++) {
         password += randomCharacter();
     }
-    console.log(password);
     return password
 }
 
@@ -34,9 +46,15 @@ function randomCharacter() {
 
 // Copies password to clipboard.
 function copy(button) {
+    console.log(button);
     const childTooltip = button.querySelector(".tooltiptext");
-    childTooltip.innerText = ""
+    childTooltip.innerText = "";
     const password = button.innerText;
     navigator.clipboard.writeText(password);
     childTooltip.innerText = "Copied password: " + password;
+}
+
+function setLength(value) {
+    passwordLength = value;
+    passwordLengthLabel.textContent = "Password Length: " + value;
 }

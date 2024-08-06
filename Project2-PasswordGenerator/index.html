@@ -14,9 +14,14 @@
         <h1 class="green">random password</h1>
         <p>Never use an insecure password again.</p>
 
+        <div class="settings-container">
+            <p id="length-label" for="length">Password Length: 10</p>
+            <input type="range" id="length" name="length" min="5" max="20" value="10" onchange="setLength(this.value)">
+        </div>
+
         <button class="generate-button" onclick="generatePasswords()" type="submit">
             Generate passwords</button>
-        <hr>
+        <hr enabled=false>
 
         <div class="password-container">
             <button class="password-button" onclick="copy(this)"></button>
