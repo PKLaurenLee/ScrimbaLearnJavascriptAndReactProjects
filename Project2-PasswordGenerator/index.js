@@ -9,7 +9,8 @@ const passwordElements = document.getElementsByClassName("password-button");
 
 function generatePasswords() {
     for (const passwordEl of passwordElements) {
-        passwordEl.innerHTML = getTooltipHTML() + generatePassword();
+        passwordEl.innerHTML = getTooltipHTML();
+        passwordEl.innerText += generatePassword();
     }
 }
 
@@ -22,7 +23,7 @@ function generatePassword() {
     for (let i = 0; i < passwordLength; i++) {
         password += randomCharacter();
     }
-
+    console.log(password);
     return password
 }
 
