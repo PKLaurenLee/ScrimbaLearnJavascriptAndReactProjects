@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -14,12 +14,13 @@
         <h1 class="green">random password</h1>
         <p>Never use an insecure password again.</p>
 
-        <button class="generate-button" onclick="generatePasswords()">Generate passwords</button>
+        <button class="generate-button" onclick="generatePasswords()" type="submit">
+            Generate passwords</button>
         <hr>
 
         <div class="password-container">
-            <div class="password-div"></div>
-            <div class="password-div"></div>
+            <button class="password-button" onclick="copy(this)"></button>
+            <button class="password-button" onclick="copy(this)"></button>
         </div>
     </div>
 

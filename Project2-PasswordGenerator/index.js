@@ -5,12 +5,16 @@ const characters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", 
     "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "[", "}", "]",
     ",", "|", ":", ";", "<", ">", ".", "?", "/"];
 const passwordLength = 10;
-const passwordElements = document.getElementsByClassName("password-div");
+const passwordElements = document.getElementsByClassName("password-button");
 
 function generatePasswords() {
     for (const passwordEl of passwordElements) {
-        passwordEl.textContent = generatePassword();
+        passwordEl.innerHTML = getTooltipHTML() + generatePassword();
     }
+}
+
+function getTooltipHTML() {
+    return "<span class=\"tooltiptext\" id=\"myTooltip\">Copy to clipboard</span>"
 }
 
 function generatePassword() {
@@ -22,6 +26,16 @@ function generatePassword() {
     return password
 }
 
+// Return random character from an array.
 function randomCharacter() {
     return characters[Math.floor(Math.random() * characters.length)]
+}
+
+// Copies password to clipboard.
+function copy(button) {
+    const childTooltip = button.querySelector(".tooltiptext");
+    childTooltip.innerText = ""
+    const password = button.innerText;
+    navigator.clipboard.writeText(password);
+    childTooltip.innerText = "Copied password: " + password;
 }
