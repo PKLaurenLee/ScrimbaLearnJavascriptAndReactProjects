@@ -1,5 +1,6 @@
 # ScrimbaLearnJavascriptProjects
-This repository contains the Solo Projects completed as part of the Learn Javascript course on Scrimba.
+This repository contains the Solo Projects completed as part of the Learn Javascript course on Scrimba. 
+These websites are created using plain Javascript, CSS, and HTML.
 
 ## Basketball Scoreboard
 ![image](https://github.com/user-attachments/assets/950a46cd-b4d6-4112-99cd-add33f8a5c70)
